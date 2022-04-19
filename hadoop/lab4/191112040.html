@@ -1,0 +1,63 @@
+<div>
+    <center>
+        <h1>
+            Hadoop Lab
+        </h1>
+        <h3>
+            CSE 328
+        </h3>
+    </center>
+    <br>
+    <br>
+    <center>
+        <h2>
+            Assignment-4
+        </h2>
+        <br>
+    </center>
+</div>
+<pre>
+    Gyanendra Kr. Shukla
+    CSE 1
+    191112040
+</pre>
+<h2 id="compile-and-run-the-given-java-file">1. Compile and Run the given java file</h2>
+<p>I followed these steps to compile and run the word count map reduce file on hadoop-</p>
+<ol type="1">
+    <li>
+        <p>ssh to <code>localhost</code> and switch to <code>hadoopuser</code> using <code>su hadoopuser</code>. <img
+                src="./startingdfs.png" /></p>
+    </li>
+    <li>
+        <p>Start <code>dfs</code> and <code>yarn</code> using <code>bash start-dfs.sh</code> and <code>bash
+                start-yarn.sh</code> respectively. <img src="./nodesofcluster.png" /></p>
+    </li>
+    <li>
+        <p>Move the input data to hdfs using <code>bin/hdfs dfs -put /home/admin1/input user/inputdata</code>.</p>
+    </li>
+    <li>
+        <p>cd to the directory containing the wordcount java file.</p>
+    </li>
+    <li>
+        <p>To compile the java program, run -</p>
+    </li>
+</ol>
+<pre><code>javac -classpath $HADOOP_HOME/share/common/hadoop-common-3.2.1.jar:$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-core-3.2.1.jar:$HADOOP_HOME/share/hadoop/common/lib/commons-cli-1.2.jar -d /home/hadoopuser/wordcount *.java</code></pre>
+<p><img src="./classcreated.png" /> 6. Three <code>.class</code> files will be created in the same directory. Move them
+    to a new directory. 7. Convert the <code>.class</code> files to <code>.jar</code> files using</p>
+<pre><code>jar -cvf My1WCMapReduce.jar -C /home/hadoopuser/wordcount/wordcountf .</code></pre>
+<p><img src="./jarcreated.png" /> 8. <code>cd</code> to hadoop installation directory with <code>cd
+        /usr/local/hadoop</code>. 9. Execute the jar file with</p>
+<pre><code>bin/hadoop jar /home/hadoopuser/wordcountf/My1WCMapReduce.jar My1WCMapReduce /user/inputdata outputwc</code></pre>
+<p><img src="./jobrunning1.png" /> <img src="./jobrunning1compl.png" /> 10. Checkin the output using <code>bin/hdfs dfs
+        -cat outputwc/*</code> <img src="./terminaloutput1.png" /> 11. Checking the output in the hdfs web directory
+    interface. <img src="./weboutput1.png" /></p>
+<h2 id="compile-and-run-the-example-jar-file">2. Compile and Run the example jar file</h2>
+<p>Since all the examples in the hadoop are already in <code>jar</code> format, we can directly execute them.</p>
+<ol type="1">
+    <li>Move the <code>etc/hadoop/*.xml</code> files to input directory with <code>bin/hdfs dfs -put /etc/hadoop/*
+            /user/inputdata</code>. <img src="./copyinput.png" /></li>
+    <li>Run the example using `bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar grep input
+        output ‘dfs[a-z.]+’ <img src="./runexample.png" /></li>
+    <li>Check the output using <code>bin/hdfs dfs -cat output/*</code> <img src="./outputexample.png" /></li>
+</ol>

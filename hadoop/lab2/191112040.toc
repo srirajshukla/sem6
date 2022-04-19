@@ -1,0 +1,5 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Study of Different types of Network Cables}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Coaxial Cables}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Study of different types of Networking devices}{2}{section.2}%
+\contentsline {section}{\numberline {3}Study of different types of Network Topologies}{2}{section.3}%
